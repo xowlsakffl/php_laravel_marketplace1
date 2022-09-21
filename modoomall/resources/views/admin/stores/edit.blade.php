@@ -1,35 +1,52 @@
-@extends('layouts.app')
-
-@section('content')
-<h1>스토어 만들기</h1>
-<form action="{{route('admin.stores.update', ['sdx' => $store->sdx])}}" method="POST">
-    @csrf
-    @method('POST')
-    <div class="form-group">
-        <label for="">스토어 이메일</label>
-        <input type="email" name="store_email" class="form-control" value="{{$store->store_email}}">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('스토어 수정') }}
+        </h2>
+    </x-slot>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <form action="{{route('admin.stores.update', ['sdx' => $store->sdx])}}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <div class="form-group">
+                            <x-input-label for="store_email" :value="__('스토어 이메일')" />
+                            <x-text-input id="email" class="block mt-1 w-full" type="email" name="store_email" required autofocus  value="{{$store->store_email}}"/>
+                            @error('store_email')
+                                <x-alert level="info" message="{{$message}}" />
+                            @enderror  
+                        </div>
+                        <div class="form-group">
+                            <x-input-label for="store_name" :value="__('스토어명')" />
+                            <x-text-input class="block mt-1 w-full" type="text" name="store_name" required autofocus  value="{{$store->store_name}}"/>
+                            @error('store_name')
+                                <x-alert level="info" message="{{$message}}" />
+                            @enderror  
+                        </div>
+                        <div class="form-group">
+                            <x-input-label for="store_tel" :value="__('스토어 전화번호')" />
+                            <x-text-input class="block mt-1 w-full" type="text" name="store_tel" required autofocus  value="{{$store->store_tel}}"/>
+                            @error('store_tel')
+                                <x-alert level="info" message="{{$message}}" />
+                            @enderror  
+                        </div>
+                        <div class="form-group">
+                            <x-input-label for="slug" :value="__('Slug')" />
+                            <x-text-input class="block mt-1 w-full" type="text" name="slug" required autofocus value="{{$store->slug}}" />
+                            @error('slug')
+                                <x-alert level="info" message="{{$message}}" />
+                            @enderror  
+                        </div>
+                        <div class="form-group">
+                            <x-primary-button class="ml-3" type="submit">
+                                {{ __('수정하기') }}
+                            </x-primary-button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="">스토어명</label>
-        <input type="text" name="store_name" class="form-control" value="{{$store->store_name}}">
-    </div>
-    <div class="form-group">
-        <label for="">스토어 전화번호</label>
-        <input type="text" name="store_tel" class="form-control" value="{{$store->store_tel}}">
-    </div>
-    <div class="form-group">
-        <label for="">상태</label>
-        <select name="state" class="form-control">
-            <option value="10" @if($store->state === 10) selected @endif>정상</option>
-            <option value="0" @if($store->state === 0) selected @endif>삭제</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="">Slug</label>
-        <input type="text" name="slug" class="form-control" value="{{$store->slug}}">
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-lg btn-success">만들기</button>
-    </div>
-</form>
-@endsection
+</x-app-layout>

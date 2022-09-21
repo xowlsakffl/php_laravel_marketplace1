@@ -15,22 +15,16 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('udx');
-            $table->string('email')->unique()->default("");
-            $table->string('password')->default("");
             $table->string('name')->default("");
-            $table->char('email_auth', 1)->default("N");
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('email')->unique();
             $table->string('cell')->default("");
-            $table->char('cell_auth', 1)->default("N");
-            $table->timestamp('cell_authed_at')->nullable();
-            $table->string('tel')->default("");
-            $table->string('join_from', 10)->default("home");
-            $table->string('super')->default("N");
-            $table->unsignedTinyInteger('state')->default(10);
-            $table->string('slug')->default("");
+            $table->string('join_from')->default("home");
+            $table->boolean('super')->default("N");
+            $table->tinyInteger('state')->default(10);
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

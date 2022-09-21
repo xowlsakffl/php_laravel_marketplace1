@@ -21,6 +21,10 @@ class Product extends Model
     }
 
     public function categories(){
-        return $this->belongsToMany(ProductCategory::class, 'pcdx');
+        return $this->belongsTo(ProductCategory::class, 'pcdx');
+    }
+
+    public function files(){
+        return $this->hasMany(File::class, 'pdx');
     }
 }

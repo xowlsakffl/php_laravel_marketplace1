@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminProductCategoryController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminStoreController;
-use App\Models\User;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,19 +20,41 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::prefix('admin')->name('admin.')->group(function(){
-    
-    Route::prefix('stores')->name('stores.')->group(function(){
-        Route::get('/', [AdminStoreController::class, 'index'])->name('index');
-        Route::get('/create', [AdminStoreController::class, 'create'])->name('create');
-        Route::post('/store', [AdminStoreController::class, 'store'])->name('store');
-        Route::get('/{sdx}/edit', [AdminStoreController::class, 'edit'])->name('edit');
-        Route::post('/update/{sdx}', [AdminStoreController::class, 'update'])->name('update');
-        Route::get('/destroy/{sdx}', [AdminStoreController::class, 'destroy'])->name('destroy');
+require __DIR__.'/auth.php';
+
+
+Route::middleware(['auth'])->group(function(){
+    Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function(){
+        Route::resource('stores', AdminStoreController::class)->parameters(['stores' => 'sdx'])->except([
+            'store'
+        ]);
+        Route::resource('products', AdminProductController::class)->parameters(['products' => 'pdx']);
+        Route::resource('/product-categories', AdminProductCategoryController::class)->parameters(['product-categories' => 'pcdx']);
+    });
+
+    Route::middleware(['storeExist'])->group(function(){
+        Route::get('/stores/make', function () {
+            return view('storemake');
+        })->name('storemake');
+        Route::get('/stores/create', [StoreController::class, 'create'])->name('stores.create');
+        Route::post('/stores/store', [StoreController::class, 'store'])->name('stores.store');
     });
     
-    Route::resource('products', AdminProductController::class)->parameters(['products' => 'pdx']);
+    Route::middleware(['store'])->group(function(){
+        Route::get('/stores', [StoreController::class, 'show'])->name('stores.show');
+        Route::get('/stores/edit', [StoreController::class, 'edit'])->name('stores.edit');
+        Route::put('/stores', [StoreController::class, 'update'])->name('stores.update');
+        Route::delete('/stores', [StoreController::class, 'delete'])->name('stores.delete');
+
+        Route::resource('products', ProductController::class)->parameters(['products' => 'pdx']);
+    
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+
+        Route::post('files/remove', [FileController::class, 'removeFile'])->name('file.remove');
+    });
 });

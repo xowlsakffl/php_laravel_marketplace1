@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('store_email')->unique()->default("");
             $table->string('store_name')->default("");
             $table->string('store_tel')->default("");
+            $table->string('logo')->default("")->nullable();
             $table->unsignedTinyInteger('state')->default(10);
             $table->string('slug')->default("");
             $table->timestamps();

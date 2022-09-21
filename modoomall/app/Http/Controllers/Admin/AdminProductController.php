@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Store;
 use Illuminate\Http\Request;
@@ -45,9 +46,15 @@ class AdminProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $data = $request->all();
+        
+        $store = Store::find($data['store']);
+        $store->products()->create($data);
+
+        flash('제품이 생성되었습니다.')->success();
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -69,7 +76,7 @@ class AdminProductController extends Controller
      */
     public function edit($pdx)
     {
-        $product = $this->product->find($pdx);
+        $product = $this->product->findOrFail($pdx);
 
         return view('admin.products.edit', compact('product'));
     }
@@ -81,9 +88,16 @@ class AdminProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $pdx)
+    public function update(ProductRequest $request, $pdx)
     {
-        //
+        $data = $request->all();
+        
+        $product = $this->product->find($pdx);
+
+        $product->update($data);
+
+        flash('제품이 수정되었습니다.')->success();
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -94,6 +108,11 @@ class AdminProductController extends Controller
      */
     public function destroy($pdx)
     {
-        //
+        $product = $this->product->find($pdx);
+
+        $product->delete();
+
+        flash('제품이 삭제되었습니다.')->success();
+        return redirect()->route('admin.products.index');
     }
 }
