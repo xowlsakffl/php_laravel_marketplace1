@@ -27,7 +27,6 @@ class StoreRequest extends FormRequest
             'store_email' => 'required|email',
             'store_name' => 'required',
             'store_tel' => 'required',
-            'slug' => 'required'
         ];
     }
 
@@ -43,7 +42,6 @@ class StoreRequest extends FormRequest
             'store_email.email' => '이메일 형식이 올바르지 않습니다.',
             'store_name.required' => '스토어 제목을 입력해주세요.',
             'store_tel.required' => '스토어 전화번호를 입력해주세요.',
-            'slug.required' => '슬러그를 입력해주세요.',
         ];
     }
 }

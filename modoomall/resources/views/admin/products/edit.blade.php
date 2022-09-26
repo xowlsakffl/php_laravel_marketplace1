@@ -89,13 +89,6 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="">Slug</label>
-        <input type="text" name="slug" class="form-control" value="{{$product->slug}}">
-        @error('slug')
-            <x-alert level="info" message="{{$message}}" />
-        @enderror
-    </div>
-    <div class="form-group">
         <button type="submit" class="btn btn-lg btn-success">수정하기</button>
     </div>
 </form>

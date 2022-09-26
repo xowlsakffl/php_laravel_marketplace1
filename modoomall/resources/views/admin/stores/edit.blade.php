@@ -33,13 +33,6 @@
                             @enderror  
                         </div>
                         <div class="form-group">
-                            <x-input-label for="slug" :value="__('Slug')" />
-                            <x-text-input class="block mt-1 w-full" type="text" name="slug" required autofocus value="{{$store->slug}}" />
-                            @error('slug')
-                                <x-alert level="info" message="{{$message}}" />
-                            @enderror  
-                        </div>
-                        <div class="form-group">
                             <x-primary-button class="ml-3" type="submit">
                                 {{ __('수정하기') }}
                             </x-primary-button>

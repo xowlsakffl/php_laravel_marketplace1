@@ -35,7 +35,6 @@ class ProductRequest extends FormRequest
             'supply' => 'required',
             'hit' => 'numeric',
             'files.*' => 'image',
-            'slug' => 'required',
         ];
     }
 
@@ -57,7 +56,6 @@ class ProductRequest extends FormRequest
             'delivery_origin_cost.required' => '배송비를 입력해주세요.',
             'supply.required' => '공급처를 입력해주세요.',
             'hit.numeric' => '숫자만 입력해주세요.',
-            'slug.required' => '슬러그를 입력해주세요.',
         ];
     }
 }

@@ -8,6 +8,12 @@
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
+                    <a href="{{route('cart.index')}}">
+                        @if (session()->has('cart'))
+                            <span>{{count(session()->get('cart'))}}</span>
+                        @endif
+                        장바구니
+                    </a>
                 </div>
 
                 <!-- Navigation Links -->

@@ -89,13 +89,6 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Slug</label>
-                        <input type="text" name="slug" class="form-control">
-                        @error('slug')
-                            <x-alert level="info" message="{{$message}}" />
-                        @enderror
-                    </div>
-                    <div class="form-group">
                         <button type="submit" class="btn btn-lg btn-success">만들기</button>
                     </div>
                 </form>
