@@ -8,18 +8,22 @@
 ## 사용 스택 ⚒️
 
 ### 백엔드
-Laravel 9<br>
-postgresql<br>
-Laravel 스타터킷 인증<br>
-composer<br>
-linux<br>
-aws
+<ul>
+  <li>Laravel 9</li>
+  <li>postgresql</li>
+  <li>linux</li>
+  <li>composer</li>
+  <li>Laravel 스타터킷 인증</li>
+  <li>aws</li>
+</ul>
 
 ### 프론트엔드
-jquery<br>
-javascript<br>
-bootstrap<br>
-npm
+<ul>
+  <li>jquery</li>
+  <li>javascript</li>
+  <li>bootstrap</li>
+  <li>npm</li>
+</ul>
 
 
 ## 소요기간 ⏱️
