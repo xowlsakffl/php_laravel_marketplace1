@@ -1,30 +1,28 @@
-# MODOOMALL
-![캡처](https://user-images.githubusercontent.com/50791439/192249737-b6d8df8b-b543-4641-8f3d-497758e367a4.PNG)
+# 모두몰(Modumall) - 개인 프로젝트 마켓플레이스
+![캡처](https://user-images.githubusercontent.com/50791439/192249737-b6d8df8b-b543-4641-8f3d-497758e367a4.PNG) <br>
+모두몰(Modumall)은 계층형 카테고리 구조와 파일 관리 기능을 갖춘 개인 프로젝트 마켓플레이스입니다.<br>네이버 스마트스토어를 레퍼런스로 개발된 모두몰은 사용자들이 제품을 쉽게 등록하고 관리할 수 있도록 다양한 기능을 제공합니다.
 
-## 개요 📌
-개인 프로젝트 마켓플레이스 모두몰.<br>
-계층형 카테고리 구조, 파일 관리 등 네이버 스마트스토어를 레퍼런스하여 개발.
+## 개요
 
-## 사용 스택 ⚒️
+모두몰은 사용자가 제품을 등록하고 판매할 수 있는 마켓플레이스입니다. 계층형 카테고리 구조와 파일 관리 기능을 통해 사용자가 효율적으로 제품을 관리할 수 있습니다. 네이버 스마트스토어의 기능을 참고하여 개발된 모두몰은 사용자 친화적인 인터페이스와 다양한 편의 기능을 제공합니다.
 
-### 백엔드
-<ul>
-  <li>Laravel 9</li>
-  <li>postgresql</li>
-  <li>linux</li>
-  <li>composer</li>
-  <li>Laravel 스타터킷 인증</li>
-  <li>aws</li>
-</ul>
+## 주요 기능
 
-### 프론트엔드
-<ul>
-  <li>jquery</li>
-  <li>javascript</li>
-  <li>bootstrap</li>
-  <li>npm</li>
-</ul>
+모두몰은 다음과 같은 주요 기능을 포함하고 있습니다:
 
+1. **계층형 카테고리 구조**: 제품을 카테고리별로 체계적으로 분류하여 효율적인 관리가 가능합니다.
+2. **파일 관리**: 이미지 등 다양한 파일을 업로드하고 관리할 수 있는 기능을 제공합니다.
+3. **상품 등록 및 관리**: 사용자가 제품을 쉽게 등록하고 수정할 수 있습니다.
+4. **상품 검색 및 필터링**: 다양한 조건으로 상품을 검색하고 필터링할 수 있습니다.
 
-## 소요기간 ⏱️
-3개월
+## 사용 기술
+
+모두몰은 다음과 같은 기술 스택을 사용하여 개발되었습니다.<br>
+
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+
+## 개발 기간
+- 3개월
+
+## 개발 인원
+- 단독
